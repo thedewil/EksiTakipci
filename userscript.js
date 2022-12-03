@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Takipçi Kontrol
 // @namespace    https://eksisozluk.com/
-// @version      0.2.2
+// @version      0.2.3
 // @description  Ekşi Sözlük'te yeni gelen takipçileri ve takipten çıkanları gösteriyor.
 // @author       You
 // @match        https://eksisozluk.com/takipci/*
@@ -33,16 +33,18 @@ window.addEventListener('load', function() {
     if (yazar==takipEdilenYazar){
         const unfollowButton = followerTab.append(createButton("dontfollow", "Bu hesabın takipçilerini izlemeyi bırak"));
         document.querySelector("#dontfollow").addEventListener("click", onButtonClick);
-        const storedTakipciler = JSON.parse(localStorage.getItem('takipciler'));
-        let gelenler = takipciler.filter(x => !storedTakipciler.includes(x));
-        let gidenler = storedTakipciler.filter(x => !takipciler.includes(x));
-        if(gelenler.length>0){
-            window.alert("Yeni gelen takipçiler: " + gelenler.join(", "));
+        if(takipciler !== null){
+            const storedTakipciler = JSON.parse(localStorage.getItem('takipciler'));
+            let gelenler = takipciler.filter(x => !storedTakipciler.includes(x));
+            let gidenler = storedTakipciler.filter(x => !takipciler.includes(x));
+            if(gelenler.length>0){
+                window.alert("Yeni gelen takipçiler: " + gelenler.join(", "));
+            }
+            if(gidenler.length>0){
+                window.alert("Takipten çıkan takipçiler: " + gidenler.join(", "));
+            }
+            localStorage.setItem('takipciler', JSON.stringify(takipciler));
         }
-        if(gidenler.length>0){
-            window.alert("Takipten çıkan takipçiler: " + gidenler.join(", "));
-        }
-        localStorage.setItem('takipciler', JSON.stringify(takipciler));
     } else if (localStorage.getItem('yazar') == null) {
         localStorage.setItem('yazar', yazar);
         localStorage.setItem('takipciler', JSON.stringify(takipciler));
