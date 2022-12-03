@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Takipçi Kontrol
 // @namespace    https://eksisozluk.com/
-// @version      0.2
+// @version      0.2.2
 // @description  Ekşi Sözlük'te yeni gelen takipçileri ve takipten çıkanları gösteriyor.
 // @author       You
 // @match        https://eksisozluk.com/takipci/*
