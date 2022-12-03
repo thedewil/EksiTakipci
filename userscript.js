@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Takipçi Kontrol
 // @namespace    https://eksisozluk.com/
-// @version      0.1
+// @version      0.1.1
 // @description  Ekşi Sözlük'te yeni gelen takipçileri ve takipten çıkanları gösteriyor.
 // @author       You
 // @match        https://eksisozluk.com/takipci/*
@@ -29,5 +29,4 @@ window.addEventListener('load', function() {
         window.alert("Takipten çıkan takipçiler: " + gidenler.join(", "));
     }
     localStorage.setItem('takipciler', JSON.stringify(takipciler));
-    //console.log(takipciler)
 }, false);
